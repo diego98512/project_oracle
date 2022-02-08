@@ -33,3 +33,6 @@
 
 # JetBrains Clion dir
 .idea
+
+# cmake-build-debug folder
+cmake-build-debug
