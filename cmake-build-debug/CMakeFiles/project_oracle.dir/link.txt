@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/project_oracle.dir/main.cpp.o CMakeFiles/project_oracle.dir/src/StartGame.cpp.o  -o project_oracle -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 

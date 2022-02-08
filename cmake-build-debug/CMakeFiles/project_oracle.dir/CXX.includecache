@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/globals.hpp
+raylib.h
+../include/raylib.h
+
+../include/raylib.h
+stdarg.h
+-
+stdbool.h
+-
+
+/home/diego/Game Dev/Projects/project_oracle/main.cpp
+iostream
+-
+globals.hpp
+/home/diego/Game Dev/Projects/project_oracle/globals.hpp
+
