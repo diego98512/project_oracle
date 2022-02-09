@@ -7,13 +7,20 @@
 
 #include "globals.hpp"
 
-class Button() {
+class Button {
 
 public:
-    Rectangle buttonSize;
-    Texture2D idleTexture;
-    Texture2D hoverTexture;
-    bool isHovered;
+    Rectangle ButtonRect{};
+    Texture2D IdleTexture{};
+    Texture2D HoverTexture{};
+
+    Button(Rectangle buttonRect, Texture2D idleTexture, Texture2D hoverTexture) {
+        ButtonRect = buttonRect;
+        IdleTexture = idleTexture;
+        HoverTexture = hoverTexture;
+    };
+
+    void AwaitAction(Vector2 mousePos);
 };
 
 

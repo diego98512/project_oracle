@@ -6,6 +6,7 @@
 #ifndef PROJECT_ORACLE_GLOBALS_HPP
 #define PROJECT_ORACLE_GLOBALS_HPP
 
+#include <iostream>
 #include "raylib.h"
 
 #endif //PROJECT_ORACLE_GLOBALS_HPP

@@ -3,6 +3,7 @@
 //
 
 #include "GameManager.hpp"
+#include "Button.hpp"
 
 int GameManager::RenderMenu() {
 
@@ -29,80 +30,58 @@ int GameManager::RenderMenu() {
 
     Texture2D projectTitleTexture = LoadTextureFromImage(projectTitleImage);
     Texture2D projectTitleBackgroundTexture = LoadTextureFromImage(projectTitleBackgroundImage);
-    Texture2D btn_startGame;
-    Texture2D btn_options;
+    Texture2D btn_startGameIdleTexture = LoadTextureFromImage(btn_startGame_idle);
+    Texture2D btn_startGameHoverTexture = LoadTextureFromImage(btn_startGame_hover);
+    Texture2D btn_optionsIdleTexture = LoadTextureFromImage(btn_options_idle);
+    Texture2D btn_optionsHoverTexture = LoadTextureFromImage(btn_options_hover);
 
     Music menuBGM = LoadMusicStream("../audio/bgm/1-02 Title Screen.mp3");
 
     UnloadImage(projectTitleImage);
     UnloadImage(projectTitleBackgroundImage);
+    UnloadImage(btn_startGame_idle);
+    UnloadImage(btn_startGame_hover);
+    UnloadImage(btn_options_idle);
+    UnloadImage(btn_options_hover);
+
+    Vector2 backgroundPos = {(float)(SCREEN_WIDTH / 2 - projectTitleBackgroundTexture.width / 2), (float)(SCREEN_HEIGHT / 2 - projectTitleBackgroundTexture.height / 2)};
+    Vector2 titlePos = {(float)(SCREEN_WIDTH / 2 - projectTitleTexture.width / 2),(float)(SCREEN_HEIGHT - 80)};
+    Vector2 startGamePos = {(float)SCREEN_WIDTH / 2 - (float)projectTitleTexture.width / 2, (float)SCREEN_HEIGHT - 130};
+    Vector2 optionsPos = {(float)SCREEN_WIDTH / 2 + ((float)projectTitleTexture.width / 2) - ((float)btn_options_idle.width), (float)SCREEN_HEIGHT - 130};
+
+    Rectangle startGameRect = {startGamePos.x, startGamePos.y, (float)btn_startGameIdleTexture.width, (float)btn_startGameIdleTexture.height};
+    Rectangle optionsRect = {optionsPos.x, optionsPos.y, (float)btn_options_idle.width, (float)btn_options_idle.height};
+
+    Button startGame = {startGameRect, btn_startGameIdleTexture, btn_startGameHoverTexture};
+    Button options = {optionsRect, btn_optionsIdleTexture, btn_optionsHoverTexture};
+
+    BeginDrawing();
+    ClearBackground(BLACK);
 
     while (!WindowShouldClose()) {
 
-        UpdateMusicStream(menuBGM);
+        DrawTexture(projectTitleBackgroundTexture, backgroundPos.x, backgroundPos.y, WHITE);
+        DrawTexture(projectTitleTexture, titlePos.x, titlePos.y, WHITE);
 
-        BeginDrawing();
+        UpdateMusicStream(menuBGM);
 
         PlayMusicStream(menuBGM);
 
-        ClearBackground(BLACK);
         DrawFPS(SCREEN_WIDTH - 90, SCREEN_HEIGHT - 30);
-
-        DrawTexture(projectTitleBackgroundTexture, SCREEN_WIDTH / 2 - projectTitleBackgroundTexture.width / 2, SCREEN_HEIGHT / 2 - projectTitleBackgroundTexture.height / 2, WHITE);
-        DrawTexture(projectTitleTexture, SCREEN_WIDTH / 2 - projectTitleTexture.width / 2, SCREEN_HEIGHT - 80, WHITE);
 
         const Vector2 mouse = GetMousePosition();
 
-        Vector2 startGamePos = {(float)SCREEN_WIDTH / 2 - (float)projectTitleTexture.width / 2, (float)SCREEN_HEIGHT - 130};
-        Vector2 optionsPos = {(float)SCREEN_WIDTH / 2 + ((float)projectTitleTexture.width / 2) - ((float)btn_options.width), (float)SCREEN_HEIGHT - 130};
+        startGame.AwaitAction(mouse);
+        options.AwaitAction(mouse);
 
-
-        if (!startButtonTextureLoaded) {
-            if (hoverStart) {
-                btn_startGame = LoadTextureFromImage(btn_startGame_hover);
-            }
-            else {
-                btn_startGame = LoadTextureFromImage(btn_startGame_idle);
+        if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
+            if (CheckCollisionPointRec(mouse, startGameRect)) {
+                return 1;
             }
 
-            DrawTexture(btn_startGame, startGamePos.x, startGamePos.y, WHITE);
-            startButtonTextureLoaded = true;
-        }
-
-        if (!hoverOptions) {
-            btn_options = LoadTextureFromImage(btn_options_idle);
-            DrawTexture(btn_options, optionsPos.x, optionsPos.y, WHITE);
-            optionsButtonTextureLoaded = true;
-        }
-
-        Rectangle startGameRect = {startGamePos.x, startGamePos.y, (float)btn_startGame.width, (float)btn_startGame.height};
-        Rectangle optionsRect = {optionsPos.x, optionsPos.y, (float)btn_options.width, (float)btn_options.height};
-
-        // If you mouse over the Start Game button:
-        if (CheckCollisionPointRec(mouse, startGameRect) && startButtonTextureLoaded) {
-            hoverStart = true;
-            //startButtonTextureLoaded = false;
-        }
-
-            // Otherwise, if you mouse over the Options button:
-        else if (CheckCollisionPointRec(mouse, optionsRect) && optionsButtonTextureLoaded) {
-            hoverOptions = true;
-            btn_options = LoadTextureFromImage(btn_options_hover);
-            //optionsButtonTextureLoaded = false;
-        }
-
-            // If neither, they both go back to normal.
-        else {
-            hoverStart = false;
-            hoverOptions = false;
-        }
-
-        if (IsKeyPressed(KEY_E)) {
-            return 1;
-        }
-
-        if (IsKeyPressed(KEY_Q)) {
-            return 2;
+            if (CheckCollisionPointRec(mouse, optionsRect)) {
+                return 2;
+            }
         }
 
         EndDrawing();
@@ -110,8 +89,12 @@ int GameManager::RenderMenu() {
 
     UnloadTexture(projectTitleTexture);
     UnloadTexture(projectTitleBackgroundTexture);
-    UnloadTexture(btn_options);
-    UnloadTexture(btn_startGame);
+    UnloadTexture(btn_optionsHoverTexture);
+    UnloadTexture(btn_optionsIdleTexture);
+    UnloadTexture(btn_startGameHoverTexture);
+    UnloadTexture(btn_startGameIdleTexture);
+
+    return 0;
 }
 
 void GameManager::RenderOptions() {

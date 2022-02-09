@@ -9,9 +9,12 @@
 #include "globals.hpp"
 
 class GameManager {
+
 public:
     const int SCREEN_WIDTH = 720;
     const int SCREEN_HEIGHT = 568;
+
+    GameManager() = default;
 
     int RenderMenu();
     void RenderOptions();

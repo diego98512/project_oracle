@@ -4,9 +4,12 @@
 
 #include "Button.hpp"
 
-Button(Rectangle buttonSize, Texture2D idleTexture, Texture2D hoverTexture, bool isHovered) {
-    Rectangle buttonSize = this.buttonSize;
-    Texture2D idleTexture = this.idleTexture;
-    Texture2D hoverTexture = this.hoverTexture;
-    bool isHovered = this.isHovered;
+void Button::AwaitAction(Vector2 mousePos) {
+
+    if (CheckCollisionPointRec(mousePos, ButtonRect)) {
+        DrawTexture(this->HoverTexture, this->ButtonRect.x, this->ButtonRect.y, WHITE);
+    }
+    else {
+        DrawTexture(this->IdleTexture, this->ButtonRect.x, this->ButtonRect.y, WHITE);
+    }
 };
