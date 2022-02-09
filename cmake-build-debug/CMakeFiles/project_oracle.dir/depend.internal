@@ -6,6 +6,11 @@ CMakeFiles/project_oracle.dir/main.cpp.o
  ../include/globals.hpp
  ../include/raylib.h
  /home/diego/Game Dev/Projects/project_oracle/main.cpp
+CMakeFiles/project_oracle.dir/src/Button.cpp.o
+ ../include/Button.hpp
+ ../include/globals.hpp
+ ../include/raylib.h
+ /home/diego/Game Dev/Projects/project_oracle/src/Button.cpp
 CMakeFiles/project_oracle.dir/src/GameManager.cpp.o
  ../include/GameManager.hpp
  ../include/globals.hpp

@@ -56,33 +56,39 @@ int GameManager::RenderMenu() {
         Vector2 startGamePos = {(float)SCREEN_WIDTH / 2 - (float)projectTitleTexture.width / 2, (float)SCREEN_HEIGHT - 130};
         Vector2 optionsPos = {(float)SCREEN_WIDTH / 2 + ((float)projectTitleTexture.width / 2) - ((float)btn_options.width), (float)SCREEN_HEIGHT - 130};
 
-        Rectangle startGameRect = {startGamePos.x, startGamePos.y, (float)btn_startGame.width, (float)btn_startGame.height};
-        Rectangle optionsRect = {optionsPos.x, optionsPos.y, (float)btn_options.width, (float)btn_options.height};
 
-        if (!hoverStart && !startButtonTextureLoaded) {
-            btn_startGame = LoadTextureFromImage(btn_startGame_idle);
+        if (!startButtonTextureLoaded) {
+            if (hoverStart) {
+                btn_startGame = LoadTextureFromImage(btn_startGame_hover);
+            }
+            else {
+                btn_startGame = LoadTextureFromImage(btn_startGame_idle);
+            }
+
             DrawTexture(btn_startGame, startGamePos.x, startGamePos.y, WHITE);
             startButtonTextureLoaded = true;
         }
 
-        if (!hoverOptions && !optionsButtonTextureLoaded) {
+        if (!hoverOptions) {
             btn_options = LoadTextureFromImage(btn_options_idle);
             DrawTexture(btn_options, optionsPos.x, optionsPos.y, WHITE);
             optionsButtonTextureLoaded = true;
         }
 
+        Rectangle startGameRect = {startGamePos.x, startGamePos.y, (float)btn_startGame.width, (float)btn_startGame.height};
+        Rectangle optionsRect = {optionsPos.x, optionsPos.y, (float)btn_options.width, (float)btn_options.height};
+
         // If you mouse over the Start Game button:
         if (CheckCollisionPointRec(mouse, startGameRect) && startButtonTextureLoaded) {
             hoverStart = true;
-            btn_startGame = LoadTextureFromImage(btn_startGame_hover);
-            startButtonTextureLoaded = false;
+            //startButtonTextureLoaded = false;
         }
 
             // Otherwise, if you mouse over the Options button:
         else if (CheckCollisionPointRec(mouse, optionsRect) && optionsButtonTextureLoaded) {
             hoverOptions = true;
             btn_options = LoadTextureFromImage(btn_options_hover);
-            optionsButtonTextureLoaded = false;
+            //optionsButtonTextureLoaded = false;
         }
 
             // If neither, they both go back to normal.

@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/diego/Game Dev/Projects/project_oracle/main.cpp" "/home/diego/Game Dev/Projects/project_oracle/cmake-build-debug/CMakeFiles/project_oracle.dir/main.cpp.o"
+  "/home/diego/Game Dev/Projects/project_oracle/src/Button.cpp" "/home/diego/Game Dev/Projects/project_oracle/cmake-build-debug/CMakeFiles/project_oracle.dir/src/Button.cpp.o"
   "/home/diego/Game Dev/Projects/project_oracle/src/GameManager.cpp" "/home/diego/Game Dev/Projects/project_oracle/cmake-build-debug/CMakeFiles/project_oracle.dir/src/GameManager.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

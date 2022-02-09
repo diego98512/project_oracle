@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+../include/Button.hpp
+globals.hpp
+../include/globals.hpp
+
 ../include/GameManager.hpp
 globals.hpp
 ../include/globals.hpp
@@ -20,11 +24,11 @@ stdarg.h
 stdbool.h
 -
 
-/home/diego/Game Dev/Projects/project_oracle/main.cpp
-iostream
--
-globals.hpp
-/home/diego/Game Dev/Projects/project_oracle/globals.hpp
+/home/diego/Game Dev/Projects/project_oracle/src/Button.cpp
+Button.hpp
+/home/diego/Game Dev/Projects/project_oracle/src/Button.hpp
+
+/home/diego/Game Dev/Projects/project_oracle/src/GameManager.cpp
 GameManager.hpp
-/home/diego/Game Dev/Projects/project_oracle/GameManager.hpp
+/home/diego/Game Dev/Projects/project_oracle/src/GameManager.hpp
 

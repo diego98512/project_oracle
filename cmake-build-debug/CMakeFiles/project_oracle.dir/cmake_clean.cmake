@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/project_oracle.dir/main.cpp.o"
+  "CMakeFiles/project_oracle.dir/src/Button.cpp.o"
   "CMakeFiles/project_oracle.dir/src/GameManager.cpp.o"
   "project_oracle"
   "project_oracle.pdb"

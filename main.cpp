@@ -6,7 +6,9 @@ GameManager gm;
 
 int main() {
 
-    gm.RenderMenu();
+    // Render the main menu and depending on the returned value, go to the proper screen after.
+    // If return 1, player clicked Start Game.
+    // If return 2, player clicked Options.
     switch (gm.RenderMenu()) {
         case 1:
             gm.StartGame();
