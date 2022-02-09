@@ -21,47 +21,47 @@ int GameManager::RenderMenu() {
 
     SetMasterVolume(volume);
 
-    Image projectTitleImage = LoadImage("../graphics/proj_title.png");
-    Image projectTitleBackgroundImage = LoadImage("../graphics/title_background2.png");
+    Image projTitleImg = LoadImage("../graphics/proj_title.png");
+    Image projTitleBGImg = LoadImage("../graphics/title_background2.png");
     Image btn_options_idle = LoadImage("../graphics/btn_options_idle.png");
     Image btn_startGame_idle = LoadImage("../graphics/btn_startGame_idle.png");
     Image btn_options_hover = LoadImage("../graphics/btn_options_hover.png");
     Image btn_startGame_hover = LoadImage("../graphics/btn_startGame_hover.png");
 
-    Texture2D projectTitleTexture = LoadTextureFromImage(projectTitleImage);
-    Texture2D projectTitleBackgroundTexture = LoadTextureFromImage(projectTitleBackgroundImage);
-    Texture2D btn_startGameIdleTexture = LoadTextureFromImage(btn_startGame_idle);
-    Texture2D btn_startGameHoverTexture = LoadTextureFromImage(btn_startGame_hover);
-    Texture2D btn_optionsIdleTexture = LoadTextureFromImage(btn_options_idle);
-    Texture2D btn_optionsHoverTexture = LoadTextureFromImage(btn_options_hover);
+    Texture2D projTitleTex = LoadTextureFromImage(projTitleImg);
+    Texture2D projTitleBGTex = LoadTextureFromImage(projTitleBGImg);
+    Texture2D btn_startGameIdleTex = LoadTextureFromImage(btn_startGame_idle);
+    Texture2D btn_startGameHoverTex = LoadTextureFromImage(btn_startGame_hover);
+    Texture2D btn_optionsIdleTex = LoadTextureFromImage(btn_options_idle);
+    Texture2D btn_optionsHoverTex = LoadTextureFromImage(btn_options_hover);
 
     Music menuBGM = LoadMusicStream("../audio/bgm/1-02 Title Screen.mp3");
 
-    UnloadImage(projectTitleImage);
-    UnloadImage(projectTitleBackgroundImage);
+    UnloadImage(projTitleImg);
+    UnloadImage(projTitleBGImg);
     UnloadImage(btn_startGame_idle);
     UnloadImage(btn_startGame_hover);
     UnloadImage(btn_options_idle);
     UnloadImage(btn_options_hover);
 
-    Vector2 backgroundPos = {(float)(SCREEN_WIDTH / 2 - projectTitleBackgroundTexture.width / 2), (float)(SCREEN_HEIGHT / 2 - projectTitleBackgroundTexture.height / 2)};
-    Vector2 titlePos = {(float)(SCREEN_WIDTH / 2 - projectTitleTexture.width / 2),(float)(SCREEN_HEIGHT - 80)};
-    Vector2 startGamePos = {(float)SCREEN_WIDTH / 2 - (float)projectTitleTexture.width / 2, (float)SCREEN_HEIGHT - 130};
-    Vector2 optionsPos = {(float)SCREEN_WIDTH / 2 + ((float)projectTitleTexture.width / 2) - ((float)btn_options_idle.width), (float)SCREEN_HEIGHT - 130};
+    Vector2 backgroundPos = {(float)(SCREEN_WIDTH / 2 - projTitleBGTex.width / 2), (float)(SCREEN_HEIGHT / 2 - projTitleBGTex.height / 2)};
+    Vector2 titlePos = {(float)(SCREEN_WIDTH / 2 - projTitleTex.width / 2), (float)(SCREEN_HEIGHT - 80)};
+    Vector2 startGamePos = {(float)SCREEN_WIDTH / 2 - (float)projTitleTex.width / 2, (float)SCREEN_HEIGHT - 130};
+    Vector2 optionsPos = {(float)SCREEN_WIDTH / 2 + ((float)projTitleTex.width / 2) - ((float)btn_options_idle.width), (float)SCREEN_HEIGHT - 130};
 
-    Rectangle startGameRect = {startGamePos.x, startGamePos.y, (float)btn_startGameIdleTexture.width, (float)btn_startGameIdleTexture.height};
+    Rectangle startGameRect = {startGamePos.x, startGamePos.y, (float)btn_startGameIdleTex.width, (float)btn_startGameIdleTex.height};
     Rectangle optionsRect = {optionsPos.x, optionsPos.y, (float)btn_options_idle.width, (float)btn_options_idle.height};
 
-    Button startGame = {startGameRect, btn_startGameIdleTexture, btn_startGameHoverTexture};
-    Button options = {optionsRect, btn_optionsIdleTexture, btn_optionsHoverTexture};
+    Button startGame = {startGameRect, btn_startGameIdleTex, btn_startGameHoverTex};
+    Button options = {optionsRect, btn_optionsIdleTex, btn_optionsHoverTex};
 
     BeginDrawing();
     ClearBackground(BLACK);
 
     while (!WindowShouldClose()) {
 
-        DrawTexture(projectTitleBackgroundTexture, backgroundPos.x, backgroundPos.y, WHITE);
-        DrawTexture(projectTitleTexture, titlePos.x, titlePos.y, WHITE);
+        DrawTexture(projTitleBGTex, backgroundPos.x, backgroundPos.y, WHITE);
+        DrawTexture(projTitleTex, titlePos.x, titlePos.y, WHITE);
 
         UpdateMusicStream(menuBGM);
 
@@ -87,12 +87,12 @@ int GameManager::RenderMenu() {
         EndDrawing();
     }
 
-    UnloadTexture(projectTitleTexture);
-    UnloadTexture(projectTitleBackgroundTexture);
-    UnloadTexture(btn_optionsHoverTexture);
-    UnloadTexture(btn_optionsIdleTexture);
-    UnloadTexture(btn_startGameHoverTexture);
-    UnloadTexture(btn_startGameIdleTexture);
+    UnloadTexture(projTitleTex);
+    UnloadTexture(projTitleBGTex);
+    UnloadTexture(btn_optionsHoverTex);
+    UnloadTexture(btn_optionsIdleTex);
+    UnloadTexture(btn_startGameHoverTex);
+    UnloadTexture(btn_startGameIdleTex);
 
     return 0;
 }
@@ -118,7 +118,7 @@ void GameManager::RenderOptions() {
 
 void GameManager::StartGame() {
 
-    Music overworldBGM = LoadMusicStream("../audio/bgm/1-07 The Overworld Theme.mp3");
+    Music overworldBGM = LoadMusicStream("../audio/bgm/1-14 Level 1, Gnarled Root Dungeon (Aquamentus).mp3");
 
     while (!WindowShouldClose()) {
 
