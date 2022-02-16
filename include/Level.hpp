@@ -12,7 +12,11 @@ class Level {
 public:
     std::string LevelName;
     Texture2D levelMap;
-    
+    tmx_map *map;
+
+    int LoadLevel(const char* filePath);
+    void UnloadLevel(tmx_map *map);
+
 
 };
 

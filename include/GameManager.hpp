@@ -7,6 +7,7 @@
 #define PROJECT_ORACLE_GAMEMANAGER_HPP
 
 #include "globals.hpp"
+//#include "Rendering.hpp"
 
 class GameManager {
 

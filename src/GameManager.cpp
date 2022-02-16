@@ -4,6 +4,7 @@
 
 #include "GameManager.hpp"
 #include "Button.hpp"
+#include "Level.hpp"
 
 int GameManager::RenderMenu() {
 
@@ -126,6 +127,7 @@ void GameManager::RenderOptions() {
 void GameManager::StartGame() {
 
     Music overworldBGM = LoadMusicStream("../audio/bgm/1-14 Level 1, Gnarled Root Dungeon (Aquamentus).mp3");
+    Level HV_Spring;
 
     while (!WindowShouldClose()) {
 
@@ -134,13 +136,15 @@ void GameManager::StartGame() {
         BeginDrawing();
         ClearBackground(BLACK);
 
-        
+        HV_Spring.LoadLevel("../graphics/tilemaps/HV_Spring.tmx");
+
 
         PlayMusicStream(overworldBGM);
 
         EndDrawing();
     }
 
+    HV_Spring.UnloadLevel(HV_Spring.map);
     CloseAudioDevice();
     CloseWindow();
 }
