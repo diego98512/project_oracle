@@ -15,10 +15,8 @@ public:
     tmx_map *map;
 
     int LoadLevel(const char* filePath);
-    void UnloadLevel(tmx_map *map);
-
+    static void UnloadLevel(tmx_map *map);
 
 };
-
 
 #endif //PROJECT_ORACLE_LEVEL_HPP

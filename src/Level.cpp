@@ -6,13 +6,11 @@
 #include "Rendering.hpp"
 
 int Level::LoadLevel(const char *filePath) {
-
-    this->map = tmx_load(filePath);
+    map = tmx_load(filePath);
     if (!map) {
         tmx_perror("Cannot load map");
         return 1;
     }
-
     render_map(map);
     return 0;
 }

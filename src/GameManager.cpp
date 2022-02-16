@@ -8,11 +8,6 @@
 
 int GameManager::RenderMenu() {
 
-    bool hoverStart = false;
-    bool hoverOptions = false;
-    bool startButtonTextureLoaded = false;
-    bool optionsButtonTextureLoaded = false;
-
     float volume = 0.1f;
 
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Project Oracle");
@@ -136,8 +131,8 @@ void GameManager::StartGame() {
         BeginDrawing();
         ClearBackground(BLACK);
 
-        HV_Spring.LoadLevel("../graphics/tilemaps/HV_Spring.tmx");
-
+        //HV_Spring.LoadLevel("../graphics/tilemaps/HV_Spring.tmx");
+        HV_Spring.LoadLevel("../graphics/tilemaps/HV_Spring2.tmx");
 
         PlayMusicStream(overworldBGM);
 
