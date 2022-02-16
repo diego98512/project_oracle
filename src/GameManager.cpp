@@ -51,13 +51,6 @@ int GameManager::RenderMenu() {
     Button startGame = {startGameRect, btn_startGameIdleTex, btn_startGameHoverTex};
     Button options = {optionsRect, btn_optionsIdleTex, btn_optionsHoverTex};
 
-    tmx_map *HV_Spring = tmx_load("../graphics/tilemaps/HV_Spring.tmx");
-
-    if (HV_Spring == nullptr) {
-        tmx_perror("Cannot load HV_Spring.");
-        return 3;
-    }
-
     BeginDrawing();
     ClearBackground(BLACK);
 
@@ -131,7 +124,6 @@ void GameManager::StartGame() {
         BeginDrawing();
         ClearBackground(BLACK);
 
-        //HV_Spring.LoadLevel("../graphics/tilemaps/HV_Spring.tmx");
         HV_Spring.LoadLevel("../graphics/tilemaps/HV_Spring2.tmx");
 
         PlayMusicStream(overworldBGM);
@@ -139,7 +131,6 @@ void GameManager::StartGame() {
         EndDrawing();
     }
 
-    HV_Spring.UnloadLevel(HV_Spring.map);
     CloseAudioDevice();
     CloseWindow();
 }

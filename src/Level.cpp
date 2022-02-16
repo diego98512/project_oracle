@@ -3,18 +3,12 @@
 //
 
 #include "Level.hpp"
-#include "Rendering.hpp"
 
 int Level::LoadLevel(const char *filePath) {
-    map = tmx_load(filePath);
-    if (!map) {
-        tmx_perror("Cannot load map");
-        return 1;
-    }
-    render_map(map);
+
     return 0;
 }
 
-void Level::UnloadLevel(tmx_map *map) {
-    tmx_map_free(map);
+void Level::UnloadLevel() {
+
 }

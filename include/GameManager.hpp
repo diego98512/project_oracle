@@ -7,7 +7,6 @@
 #define PROJECT_ORACLE_GAMEMANAGER_HPP
 
 #include "globals.hpp"
-//#include "Rendering.hpp"
 
 class GameManager {
 
@@ -18,8 +17,8 @@ public:
     GameManager() = default;
 
     int RenderMenu();
-    void RenderOptions();
-    void StartGame();
+    static void RenderOptions();
+    static void StartGame();
 
 };
 

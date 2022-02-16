@@ -12,6 +12,5 @@
 #include <stdio.h>
 
 #include "raylib.h"
-#include "tmx.h"
 
 #endif //PROJECT_ORACLE_GLOBALS_HPP
